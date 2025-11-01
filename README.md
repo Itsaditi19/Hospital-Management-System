@@ -36,61 +36,7 @@ g++ main.cpp -o main
 
 text
 
-## Usage Example
 
-### Program Execution:
-
-How many patients do you want to register? 2
-
---- Patient #1 ---
-Enter ID: 23131313
-Enter Name: Saksham
-Enter Age: 19
-Enter Gender: Male
-Enter Disease: Fever, Mild Cold
-Enter Address: 3/1 Lal Kothi, Jaipur
-
-[Friend] The patient's ID is: 23131313
-
---- Patient #2 ---
-Enter ID: 24142414
-Enter Name: Naman
-Enter Age: 20
-Enter Gender: Male
-Enter Disease: Asthma
-Enter Address: 4/a-2 malviya nagar, Jaipur
-
-[Friend] The patient's ID is: 24142414
-
-== Registration Cards ==
-
----- Registration Card ----
-ID : 23131313
-Name : Saksham
-Age : 19
-Gender : Male
-Disease : Fever, Mild Cold
-Address : 3/1 Lal Kothi, Jaipur
----- Registration Card ----
-ID : 24142414
-Name : Naman
-Age : 20
-Gender : Male
-Disease : Asthma
-Address : 4/a-2 malviya nagar, Jaipur
-Total patients registered: 2
-OOP Inheritance says: Welcome!
-
-Press Enter to exit...
-
-text
-
-## Generated Output File
-
-Patient data is saved in `patientdata.txt` in CSV format for easy analysis:
-
-23131313,Saksham,19,Male,Fever, Mild Cold,3/1 Lal Kothi, Jaipur
-24142414,Naman,20,Male,Asthma,4/a-2 malviya nagar, Jaipur
 
 text
 
@@ -209,3 +155,4 @@ This project is ideal for demonstrating comprehensive understanding of Object-Or
 **Project Type**: C++ OOP Mini Project  
 **Institution**: Poornima Institute of Engineering and Technology (PIET)  
 **ID Format**: 8-Digit Numeric (Standardized)
+
