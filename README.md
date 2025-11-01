@@ -91,11 +91,16 @@ text
 ## Project File Structure
 
 Hospital-Management-System/
-├── main.cpp # Complete C++ source code
-├── main # Executable binary file
-├── main.o # Object file (intermediate compilation)
-├── patientdata.txt # Patient records database (CSV format)
-└── README.md # Project documentation   
+
+├── main.cpp # -  Complete C++ source code
+
+├── main # -  Executable binary file
+
+├── main.o # -  Object file (intermediate compilation)
+
+├── patientdata.txt # -  Patient records database (CSV format)
+
+└── README.md # -  Project documentation   
 
 
 
@@ -152,4 +157,5 @@ This project is ideal for demonstrating comprehensive understanding of Object-Or
 **Project Type**: C++ OOP Mini Project  
 **Institution**: Poornima Institute of Engineering and Technology (PIET)  
 **ID Format**: 8-Digit Numeric (Standardized)
+
 
