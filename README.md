@@ -95,9 +95,9 @@ Hospital-Management-System/
 ├── main # Executable binary file
 ├── main.o # Object file (intermediate compilation)
 ├── patientdata.txt # Patient records database (CSV format)
-└── README.md # Project documentation
+└── README.md # Project documentation   
 
-text
+
 
 ## Data Storage Format
 Patient information is stored in `patientdata.txt` using CSV (Comma-Separated Values) format for compatibility and easy data migration.
@@ -152,3 +152,4 @@ This project is ideal for demonstrating comprehensive understanding of Object-Or
 **Project Type**: C++ OOP Mini Project  
 **Institution**: Poornima Institute of Engineering and Technology (PIET)  
 **ID Format**: 8-Digit Numeric (Standardized)
+
