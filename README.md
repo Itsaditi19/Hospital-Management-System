@@ -34,11 +34,6 @@ text
 g++ main.cpp -o main
 ./main
 
-text
-
-
-
-text
 
 ## OOP Concepts Implemented
 
@@ -155,4 +150,5 @@ This project is ideal for demonstrating comprehensive understanding of Object-Or
 **Project Type**: C++ OOP Mini Project  
 **Institution**: Poornima Institute of Engineering and Technology (PIET)  
 **ID Format**: 8-Digit Numeric (Standardized)
+
 
