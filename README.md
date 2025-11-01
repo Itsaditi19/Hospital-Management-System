@@ -34,6 +34,7 @@ text
 g++ main.cpp -o main
 ./main
 
+text
 
 ## OOP Concepts Implemented
 
@@ -51,15 +52,15 @@ g++ main.cpp -o main
 - Ensures data integrity during object instantiation
 
 ### 4. **Static Members**
-- `static int total` - class-level counter tracking total registrations
+- `static int total` — class-level counter tracking total registrations
 - `static` data persists across all Patient instances
 - Demonstrates class-level data management
 
 ### 5. **Member Functions**
-- `input()` - Collects and stores patient data using `cin.getline()`
-- `printCard()` - Displays formatted registration card
-- `saveToFile()` - Persists data to file using `ofstream`
-- `getId()` - Getter method for patient ID access
+- `input()` — Collects and stores patient data using `cin.getline()`
+- `printCard()` — Displays formatted registration card
+- `saveToFile()` — Persists data to file using `ofstream`
+- `getId()` — Getter method for patient ID access
 
 ### 6. **File Handling (I/O)**
 - `ofstream` object for file output operations
@@ -77,17 +78,18 @@ g++ main.cpp -o main
 - Enables intuitive equality checking between Patient objects
 
 ### 9. **Inheritance and Polymorphism**
-- `Person` - Abstract base class with virtual member function
-- `OOPPatient` - Derived class inheriting from both `Person` and `Patient` (multiple inheritance)
-- `virtual void hello()` - Demonstrates polymorphic behavior
+- `Person` — Abstract base class with virtual member function
+- `OOPPatient` — Derived class inheriting from both `Person` and `Patient` (multiple inheritance)
+- `virtual void hello()` — Demonstrates polymorphic behavior
 - Dynamic binding shows method overriding in derived class
 
 ### 10. **Arrays of Objects**
-- `Patient plist[10]` - Array container for multiple Patient objects
+- `Patient plist[10]` — Array container for multiple Patient objects
 - Enables batch processing of patient records
 - Supports iteration through registered patients
 
 ## Project File Structure
+
 Hospital-Management-System/
 ├── main.cpp # Complete C++ source code
 ├── main # Executable binary file
@@ -98,7 +100,7 @@ Hospital-Management-System/
 text
 
 ## Data Storage Format
-Patient information stored in `patientdata.txt` uses CSV (Comma-Separated Values) format for compatibility and easy data migration.
+Patient information is stored in `patientdata.txt` using CSV (Comma-Separated Values) format for compatibility and easy data migration.
 
 ## System Specifications
 - **Patient ID Format**: 8-digit numeric identifier (e.g., 23131313)
@@ -150,5 +152,3 @@ This project is ideal for demonstrating comprehensive understanding of Object-Or
 **Project Type**: C++ OOP Mini Project  
 **Institution**: Poornima Institute of Engineering and Technology (PIET)  
 **ID Format**: 8-Digit Numeric (Standardized)
-
-
