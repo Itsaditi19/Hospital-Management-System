@@ -39,6 +39,7 @@ text
 ## Usage Example
 
 ### Program Execution:
+
 How many patients do you want to register? 2
 
 --- Patient #1 ---
@@ -85,6 +86,7 @@ Press Enter to exit...
 text
 
 ### Generated Output File (`patientdata.txt`):
+
 23131313,Saksham,19,Male,Fever, Mild Cold,3/1 Lal Kothi, Jaipur
 24142414,Naman,20,Male,Asthma,4/a-2 malviya nagar, Jaipur
 
@@ -186,37 +188,22 @@ text
 ## Key Implementation Details
 
 ### Input Handling
-Uses cin.getline() for ALL inputs to avoid buffer issues
-
-Converts numeric strings using atoi() function
-
-Accepts 8-digit patient ID format (00000000 to 99999999)
-
-Ensures data integrity across multiple patient entries
-
-text
+- Uses `cin.getline()` for ALL inputs to avoid buffer issues
+- Converts numeric strings using `atoi()` function
+- Accepts 8-digit patient ID format (00000000 to 99999999)
+- Ensures data integrity across multiple patient entries
 
 ### Data Processing
-Static counter increments only when patient data is successfully entered
-
-Friend function displays patient ID after each registration
-
-Operator overloading checks for duplicate IDs
-
-All patient IDs must be 8 digits for consistency
-
-text
+- Static counter increments only when patient data is successfully entered
+- Friend function displays patient ID after each registration
+- Operator overloading checks for duplicate IDs
+- All patient IDs must be 8 digits for consistency
 
 ### Output Generation
-Professional registration cards with consistent 8-digit ID formatting
-
-Summary statistics showing total patients registered
-
-Polymorphic inheritance demo through OOP class
-
-Data saved in standardized CSV format
-
-text
+- Professional registration cards with consistent 8-digit ID formatting
+- Summary statistics showing total patients registered
+- Polymorphic inheritance demo through OOP class
+- Data saved in standardized CSV format
 
 ## Future Enhancement Opportunities
 - Integrate relational database (SQLite, MySQL, PostgreSQL)
