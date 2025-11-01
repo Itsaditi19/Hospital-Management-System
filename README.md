@@ -85,7 +85,9 @@ Press Enter to exit...
 
 text
 
-### Generated Output File (`patientdata.txt`):
+## Generated Output File
+
+Patient data is saved in `patientdata.txt` in CSV format for easy analysis:
 
 23131313,Saksham,19,Male,Fever, Mild Cold,3/1 Lal Kothi, Jaipur
 24142414,Naman,20,Male,Asthma,4/a-2 malviya nagar, Jaipur
@@ -155,20 +157,13 @@ Hospital-Management-System/
 text
 
 ## Data Storage Format
-Patient information stored in `patientdata.txt` uses CSV (Comma-Separated Values) format for compatibility and easy data migration:
-
-ID,Name,Age,Gender,Disease,Address
-23131313,Saksham,19,Male,Fever, Mild Cold,3/1 Lal Kothi, Jaipur
-24142414,Naman,20,Male,Asthma,4/a-2 malviya nagar, Jaipur
-
-text
+Patient information stored in `patientdata.txt` uses CSV (Comma-Separated Values) format for compatibility and easy data migration.
 
 ## System Specifications
 - **Patient ID Format**: 8-digit numeric identifier (e.g., 23131313)
 - **Maximum Patients**: 10 per session
 - **Storage**: Text file-based (no database backend)
 - **Features**: Read and write operations (no edit/delete)
-- **Search**: No advanced filtering capabilities
 
 ## Implementation Highlights
 - **Robust Input**: Uses `cin.getline()` for reliable string input handling
@@ -185,26 +180,6 @@ text
 - Self-documenting code with meaningful variable names
 - Demonstrates industry best practices in OOP design
 
-## Key Implementation Details
-
-### Input Handling
-- Uses `cin.getline()` for ALL inputs to avoid buffer issues
-- Converts numeric strings using `atoi()` function
-- Accepts 8-digit patient ID format (00000000 to 99999999)
-- Ensures data integrity across multiple patient entries
-
-### Data Processing
-- Static counter increments only when patient data is successfully entered
-- Friend function displays patient ID after each registration
-- Operator overloading checks for duplicate IDs
-- All patient IDs must be 8 digits for consistency
-
-### Output Generation
-- Professional registration cards with consistent 8-digit ID formatting
-- Summary statistics showing total patients registered
-- Polymorphic inheritance demo through OOP class
-- Data saved in standardized CSV format
-
 ## Future Enhancement Opportunities
 - Integrate relational database (SQLite, MySQL, PostgreSQL)
 - Implement search and filtering by disease, gender, or date
@@ -214,7 +189,6 @@ text
 - Generate statistical reports and analytics
 - Implement user authentication and role-based access control
 - Web interface for remote access
-- Mobile application for patient self-registration
 
 ## Academic Value
 This project is ideal for demonstrating comprehensive understanding of Object-Oriented Programming principles including encapsulation, inheritance, polymorphism, and file I/O operations as required in college-level C++ courses.
@@ -226,29 +200,6 @@ This project is ideal for demonstrating comprehensive understanding of Object-Or
 4. Test duplicate ID detection with matching 8-digit IDs
 5. Validate character encoding for special characters in names/addresses
 6. Monitor program with various input sizes and formats
-7. Confirm consistent ID formatting in registration cards
-
-## Execution Flow
-START
-↓
-Input: Number of Patients (n)
-↓
-FOR each patient (1 to n):
-├→ Read patient details (8-digit ID, Name, Age, Gender, Disease, Address)
-├→ Increment static counter
-├→ Save to file
-├→ Display friend function message
-└→ Check for duplicate IDs
-↓
-Display registration cards with consistent 8-digit formatting
-↓
-Display total patient count
-↓
-Show polymorphism demo
-↓
-END
-
-text
 
 ---
 
