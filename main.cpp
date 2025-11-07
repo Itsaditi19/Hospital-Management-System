@@ -3,7 +3,6 @@
 #include<cstring>
 using namespace std;
 
-// Patient class for storing patient info
 class Patient {
 private:
     int patientId;
@@ -24,7 +23,6 @@ public:
         strcpy(address, "");
     }
     
-    // Register new patient
     void registerPatient() {
         char temp[100];
         cout << "\nEnter Patient ID: ";
@@ -49,8 +47,7 @@ public:
         
         totalPatients++;
     }
-    
-    // Print patient details
+
     void printDetails() {
         cout << "\nPatient ID: " << patientId << endl;
         cout << "Name: " << pName << endl;
@@ -59,8 +56,7 @@ public:
         cout << "Disease: " << disease << endl;
         cout << "Address: " << address << endl;
     }
-    
-    // Save to file
+
     void saveToFile() {
         ofstream file;
         file.open("patientdata.txt", ios::app);
@@ -80,11 +76,9 @@ public:
     int getId() {
         return patientId;
     }
-    
-    // Friend function
+
     friend void showId(Patient &);
-    
-    // Operator to check duplicate
+  
     bool operator==(Patient &other) {
         return patientId == other.patientId;
     }
@@ -92,12 +86,10 @@ public:
 
 int Patient::totalPatients = 0;
 
-// Friend function
 void showId(Patient &p) {
     cout << "[Info] Patient ID: " << p.patientId << endl;
 }
 
-// Person class - base class
 class Person {
 public:
     virtual void welcome() {
@@ -105,7 +97,6 @@ public:
     }
 };
 
-// VIP patient class
 class VIPPatient : public Person, public Patient {
 public:
     void welcome() {
@@ -128,8 +119,7 @@ int main() {
         patients[i].registerPatient();
         patients[i].saveToFile();
         showId(patients[i]);
-        
-        // Check for duplicate ID
+   
         bool isDuplicate = false;
         for (int j = 0; j < i; j++) {
             if (patients[i] == patients[j]) {
@@ -155,3 +145,4 @@ int main() {
     cin.get();
     return 0;
 }
+
