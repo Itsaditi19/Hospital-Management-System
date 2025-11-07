@@ -87,5 +87,6 @@ This is a college project for learning OOP. The focus is on understanding concep
 ---
 
 **Date:** November 2025  
-**For:** College OOP Assignment
+**For:** College OOP (c++) Project
+
 
