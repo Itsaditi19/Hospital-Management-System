@@ -57,19 +57,20 @@ Open `main.cpp` and press **F9**
 Each patient is saved like this:
 ==========================================
 Patient Details
-ID: 23131313
-Name: john
-Age: 45
-Gender: M
-Disease: fever
-Address: xyz street
-text
 
-## Limits
+-ID: 23131313
 
-- Max 10 patients per run
-- Can only register patients (no edit/delete)
-- Numbers only for age and ID
+-Name: john
+
+-Age: 45
+
+-Gender: M
+
+-Disease: fever
+
+-Address: xyz street
+
+
 
 ## How to Test
 
@@ -78,24 +79,8 @@ text
 3. Open `patientdata.txt` to see saved data
 4. Check if all details are correct
 
-## What I Learned
 
-- How to make classes and use objects
-- Private and public data
-- Using arrays to store many objects
-- Operator overloading
-- File handling in C++
-
-## Things I Could Add Later
-
-- Search for patient by ID
-- Edit patient information
-- Delete patient record
-- Appointment scheduling
-- Doctor assignment
-- Better file format (CSV)
-
-## Notes
+## --
 
 This is a college project for learning OOP. The focus is on understanding concepts, not a real hospital system.
 
@@ -103,3 +88,4 @@ This is a college project for learning OOP. The focus is on understanding concep
 
 **Date:** November 2025  
 **For:** College OOP Assignment
+
