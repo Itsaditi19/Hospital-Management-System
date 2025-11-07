@@ -1,122 +1,157 @@
-#include <iostream>
-#include <fstream>
-#include <cstring>
+#include<iostream>
+#include<fstream>
+#include<cstring>
 using namespace std;
 
+// Patient class for storing patient info
 class Patient {
 private:
-    int id, age;
-    char name[50], gender[20], disease[50], address[100];
+    int patientId;
+    char pName[50];
+    int age;
+    char gender[10];
+    char disease[50];
+    char address[100];
 public:
-    static int total;
-
+    static int totalPatients;
+    
     Patient() {
-        id=0;
-        age=0;
-        strcpy(name, "");
+        patientId = 0;
+        strcpy(pName, "");
+        age = 0;
         strcpy(gender, "");
         strcpy(disease, "");
         strcpy(address, "");
     }
-
-    void input() {
+    
+    // Register new patient
+    void registerPatient() {
         char temp[100];
-
-        cout << "Enter ID: ";
+        cout << "\nEnter Patient ID: ";
         cin.getline(temp, 100);
-        id = atoi(temp);
-
+        patientId = atoi(temp);
+        
         cout << "Enter Name: ";
-        cin.getline(name, 50);
-
+        cin.getline(pName, 50);
+        
         cout << "Enter Age: ";
         cin.getline(temp, 100);
         age = atoi(temp);
-
-        cout << "Enter Gender: ";
-        cin.getline(gender, 20);
-
+        
+        cout << "Enter Gender (M/F/Other): ";
+        cin.getline(gender, 10);
+        
         cout << "Enter Disease: ";
         cin.getline(disease, 50);
-
+        
         cout << "Enter Address: ";
         cin.getline(address, 100);
-
-        total++;
+        
+        totalPatients++;
     }
-
-    void printCard() {
-        cout << "\n---- Registration Card ----\n";
-        cout << "ID      : " << id << "\n";
-        cout << "Name    : " << name << "\n";
-        cout << "Age     : " << age << "\n";
-        cout << "Gender  : " << gender << "\n";
-        cout << "Disease : " << disease << "\n";
-        cout << "Address : " << address << "\n";
-        cout << "--------------------------\n";
+    
+    // Print patient details
+    void printDetails() {
+        cout << "\nPatient ID: " << patientId << endl;
+        cout << "Name: " << pName << endl;
+        cout << "Age: " << age << endl;
+        cout << "Gender: " << gender << endl;
+        cout << "Disease: " << disease << endl;
+        cout << "Address: " << address << endl;
     }
-
+    
+    // Save to file
     void saveToFile() {
-        ofstream fout("patientdata.txt", ios::app);
-        fout << id << "," << name << "," << age << "," << gender << "," << disease << "," << address << "\n";
+        ofstream file;
+        file.open("patientdata.txt", ios::app);
+        file << "==========================================\n";
+        file << "Patient Details\n";
+        file << "==========================================\n";
+        file << "ID: " << patientId << "\n";
+        file << "Name: " << pName << "\n";
+        file << "Age: " << age << "\n";
+        file << "Gender: " << gender << "\n";
+        file << "Disease: " << disease << "\n";
+        file << "Address: " << address << "\n";
+        file << "==========================================\n\n";
+        file.close();
     }
-
-    int getId() { return id; }
-
-    bool operator==(Patient &p2) { return id == p2.id; }
-
-    friend void friendDemo(Patient &);
+    
+    int getId() {
+        return patientId;
+    }
+    
+    // Friend function
+    friend void showId(Patient &);
+    
+    // Operator to check duplicate
+    bool operator==(Patient &other) {
+        return patientId == other.patientId;
+    }
 };
 
-int Patient::total = 0;
+int Patient::totalPatients = 0;
 
-void friendDemo(Patient &p) {
-    cout << "[Friend] The patient's ID is: " << p.id << endl;
+// Friend function
+void showId(Patient &p) {
+    cout << "[Info] Patient ID: " << p.patientId << endl;
 }
 
+// Person class - base class
 class Person {
 public:
-    virtual void hello() { cout << "Patient registration done!\n"; }
+    virtual void welcome() {
+        cout << "Patient registered!\n";
+    }
 };
 
-class OOPPatient : public Person, public Patient {
+// VIP patient class
+class VIPPatient : public Person, public Patient {
 public:
-    void hello() { cout << "OOP Inheritance says: Welcome!\n"; }
+    void welcome() {
+        cout << "Welcome VIP Patient!\n";
+    }
 };
 
 int main() {
-    Patient::total = 0;
-
     char temp[100];
     int n;
-
-    cout << "How many patients do you want to register? ";
+    
+    cout << "How many patients to register? ";
     cin.getline(temp, 100);
     n = atoi(temp);
-
-    Patient plist[10];
-
-    for (int i = 0; i < n; ++i) {
-        cout << "\n--- Patient #" << (i+1) << " ---\n";
-        plist[i].input();
-        plist[i].saveToFile();
-        friendDemo(plist[i]);
-
-        if (i > 0 && plist[i] == plist[i-1])
-            cout << "[Operator==] Warning: 2 consecutive patients have same ID!\n";
+    
+    Patient patients[10];
+    
+    for (int i = 0; i < n; i++) {
+        cout << "\n--- Patient " << (i+1) << " ---\n";
+        patients[i].registerPatient();
+        patients[i].saveToFile();
+        showId(patients[i]);
+        
+        // Check for duplicate ID
+        bool isDuplicate = false;
+        for (int j = 0; j < i; j++) {
+            if (patients[i] == patients[j]) {
+                isDuplicate = true;
+                cout << "WARNING: Patient ID already exists!\n";
+                break;
+            }
+        }
     }
-
-    cout << "\n== Registration Cards ==\n";
-    for (int i = 0; i < n; ++i)
-        plist[i].printCard();
-
-    cout << "Total patients registered: " << Patient::total << endl;
-
-    OOPPatient op;
-    Person *ptr = &op;
-    ptr->hello();
-
-    cout << "Press Enter to exit...";
+    
+    cout << "\n=== All Patients ===\n";
+    for (int i = 0; i < n; i++) {
+        patients[i].printDetails();
+    }
+    
+    cout << "\nTotal Patients Registered: " << Patient::totalPatients << endl;
+    
+    VIPPatient vip;
+    Person *ptr = &vip;
+    ptr->welcome();
+    
+    cout << "\nPress Enter to exit...";
     cin.get();
     return 0;
 }
