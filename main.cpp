@@ -1,8 +1,8 @@
 #include<iostream>
 #include<fstream>
 #include<cstring>
+#include<string> 
 using namespace std;
-
 class Patient {
 private:
     int patientId;
@@ -21,6 +21,7 @@ public:
         strcpy(disease, "");
         strcpy(address, "");
     }
+    
     void registerPatient() {
         char temp[100];
         cout << "\nEnter Patient ID: ";
@@ -45,6 +46,7 @@ public:
 
         totalPatients++;
     }
+    
     void printDetails() {
         cout << "\nPatient ID: " << patientId << endl;
         cout << "Name: " << pName << endl;
@@ -53,7 +55,6 @@ public:
         cout << "Disease: " << disease << endl;
         cout << "Address: " << address << endl;
     }
-
     void saveToFile() {
         ofstream file("patientdata.txt", ios::app);
         if (file.is_open()) {
@@ -73,24 +74,25 @@ public:
     int getId() {
         return patientId;
     }
-    friend void showId(Patient &);
 
+    friend void showId(Patient &);
+  
     bool operator==(Patient &other) {
         return patientId == other.patientId;
     }
 };
+
 int Patient::totalPatients = 0;
+
 void showId(Patient &p) {
     cout << "[Info] Patient ID: " << p.patientId << endl;
 }
-
 class Person {
 public:
     virtual void welcome() {
         cout << "Patient registered!\n";
     }
 };
-
 class VIPPatient : public Person, public Patient {
 public:
     void welcome() {
@@ -116,7 +118,10 @@ int main() {
     cout << "How many patients to register? ";
     cin.getline(temp, 100);
     n = atoi(temp);
-
+    if (n > 10) {
+        cout << "Maximum 10 patients allowed!\n";
+        return 1;
+    }
     Patient patients[10];
     for (int i = 0; i < n; i++) {
         cout << "\n--- Patient " << (i+1) << " ---\n";
@@ -135,12 +140,10 @@ int main() {
             showId(patients[i]);
         }
     }
-
     cout << "\n=== All Patients ===\n";
     for (int i = 0; i < n; i++) {
         patients[i].printDetails();
     }
-
     cout << "\nTotal Patients Registered: " << Patient::totalPatients << endl;
     VIPPatient vip;
     Person *ptr = &vip;
