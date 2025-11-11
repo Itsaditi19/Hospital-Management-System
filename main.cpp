@@ -11,8 +11,11 @@ private:
     char gender[10];
     char disease[50];
     char address[100];
+    bool isValid;
+    
 public:
     static int totalPatients;
+    
     Patient() {
         patientId = 0;
         strcpy(pName, "");
@@ -20,8 +23,8 @@ public:
         strcpy(gender, "");
         strcpy(disease, "");
         strcpy(address, "");
+        isValid = true;
     }
-    
     void registerPatient() {
         char temp[100];
         cout << "\nEnter Patient ID: ";
@@ -29,25 +32,26 @@ public:
         patientId = atoi(temp);
 
         cout << "Enter Name: ";
-        cin.getline(pName, 50);
+        cin.getline(pName, 49);
 
         cout << "Enter Age: ";
         cin.getline(temp, 100);
         age = atoi(temp);
 
         cout << "Enter Gender (M/F/Other): ";
-        cin.getline(gender, 10);
+        cin.getline(gender, 9);
 
         cout << "Enter Disease: ";
-        cin.getline(disease, 50);
+        cin.getline(disease, 49);
 
         cout << "Enter Address: ";
-        cin.getline(address, 100);
+        cin.getline(address, 99);
 
         totalPatients++;
     }
-    
     void printDetails() {
+        if (!isValid) return;
+        
         cout << "\nPatient ID: " << patientId << endl;
         cout << "Name: " << pName << endl;
         cout << "Age: " << age << endl;
@@ -57,22 +61,34 @@ public:
     }
     void saveToFile() {
         ofstream file("patientdata.txt", ios::app);
-        if (file.is_open()) {
-            file << "==========================================\n";
-            file << "Patient Details\n";
-            file << "==========================================\n";
-            file << "ID: " << patientId << "\n";
-            file << "Name: " << pName << "\n";
-            file << "Age: " << age << "\n";
-            file << "Gender: " << gender << "\n";
-            file << "Disease: " << disease << "\n";
-            file << "Address: " << address << "\n";
-            file << "==========================================\n\n";
-            file.close();
+        if (!file.is_open()) {
+            cout << "\nERROR: Could not open file for writing!\n";
+            return;
         }
+        
+        file << "==========================================\n";
+        file << "Patient Details\n";
+        file << "==========================================\n";
+        file << "ID: " << patientId << "\n";
+        file << "Name: " << pName << "\n";
+        file << "Age: " << age << "\n";
+        file << "Gender: " << gender << "\n";
+        file << "Disease: " << disease << "\n";
+        file << "Address: " << address << "\n";
+        file << "==========================================\n\n";
+        file.close();
+        
+        cout << "[SUCCESS] Patient data saved to file!\n";
     }
     int getId() {
         return patientId;
+    }
+    
+    void setInvalid() {
+        isValid = false;
+    }
+    bool getValid() {
+        return isValid;
     }
 
     friend void showId(Patient &);
@@ -81,17 +97,18 @@ public:
         return patientId == other.patientId;
     }
 };
-
 int Patient::totalPatients = 0;
 
 void showId(Patient &p) {
     cout << "[Info] Patient ID: " << p.patientId << endl;
 }
+
 class Person {
 public:
     virtual void welcome() {
         cout << "Patient registered!\n";
     }
+    virtual ~Person() {}
 };
 class VIPPatient : public Person, public Patient {
 public:
@@ -101,15 +118,17 @@ public:
 };
 void showPatientDataFile() {
     ifstream file("patientdata.txt");
-    if (!file) {
+    if (!file.is_open()) {
         cout << "\nNo patient data found.\n";
         return;
     }
-    cout << "\n--- Contents of patientdata.txt ---\n";
+    
+    cout << "\n========== FILE CONTENTS: patientdata.txt ==========\n";
     string line;
     while (getline(file, line)) {
         cout << line << endl;
     }
+    cout << "====================================================\n";
     file.close();
 }
 int main() {
@@ -118,23 +137,27 @@ int main() {
     cout << "How many patients to register? ";
     cin.getline(temp, 100);
     n = atoi(temp);
-    if (n > 10) {
-        cout << "Maximum 10 patients allowed!\n";
+    
+    if (n > 10 || n <= 0) {
+        cout << "Maximum 10 patients allowed! Enter 1-10.\n";
         return 1;
     }
+    
     Patient patients[10];
+    
     for (int i = 0; i < n; i++) {
         cout << "\n--- Patient " << (i+1) << " ---\n";
         patients[i].registerPatient();
 
         bool isDuplicate = false;
         for (int j = 0; j < i; j++) {
-            if (patients[i] == patients[j]) {
+            if (patients[i] == patients[j] && patients[j].getValid()) {
                 isDuplicate = true;
                 cout << "WARNING: Patient ID already exists!\n";
+                patients[i].setInvalid();
                 break;
             }
-        }
+        } 
         if (!isDuplicate) {
             patients[i].saveToFile();
             showId(patients[i]);
@@ -144,6 +167,7 @@ int main() {
     for (int i = 0; i < n; i++) {
         patients[i].printDetails();
     }
+    
     cout << "\nTotal Patients Registered: " << Patient::totalPatients << endl;
     VIPPatient vip;
     Person *ptr = &vip;
