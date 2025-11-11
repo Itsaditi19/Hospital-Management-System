@@ -75,9 +75,8 @@ Patient Details
 ## How to Test
 
 1. Register 2-3 patients with different IDs
-2. Try using same patient ID twice to see warning
-3. Open `patientdata.txt` to see saved data
-4. Check if all details are correct
+2. Open `patientdata.txt` to see saved data
+3. Check if all details are correct
 
 
 ## --
@@ -88,5 +87,6 @@ This is a college project for learning OOP. The focus is on understanding concep
 
 **Date:** November 2025  
 **For:** College OOP (c++) Project
+
 
 
